@@ -50,8 +50,10 @@ const ShoppingCart  = () => {
     const newProduct = {
       id : product.id,
       product : product.product,
-      price : product.price
+      price : product.price,
+      //inCart: product.inCart = true
     }
+    product.inCart = true;
     const updatedCart = [newProduct, ...cart]
     updateCart(updatedCart)
   }
@@ -94,9 +96,11 @@ const ShoppingCart  = () => {
                  </View>
                </View>
                <View style={{flexDirection:'row'}}>
-                  <View style={{marginBottom:20, marginTop:20, borderRadius:5, backgroundColor:'#528AD4'}}>
+                  <View style={{marginBottom:20, marginTop:20, borderRadius:5}}>
                     {product.inCart ? (
-                      <Button color="black"   title="in cart" onPress = {() => addProducts(product)} />
+                      <View style={{ }}>
+                           <Button color="red"   title=" remove from cart" onPress = {() => addProducts(product)} />
+                      </View> 
                     ) : (
                       <Button color="black"   title="add to cart" onPress = {() => addProducts(product)} />
                     )
