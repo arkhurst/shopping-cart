@@ -45,19 +45,28 @@ const ShoppingCart  = () => {
   const [cart, updateCart] = useState([]);
   
 
-
   const addProducts = (product) => {
     const newProduct = {
       id : product.id,
       product : product.product,
       price : product.price,
-      //inCart: product.inCart = true
+
     }
     product.inCart = true;
+
     const updatedCart = [newProduct, ...cart]
     updateCart(updatedCart)
   }
 
+  const removeProducts = (product) => {
+    const newCart = product.filter(product => product.id !==id)
+
+    product.inCart = false
+
+    const updatedCart = [newCart, ...cart]
+
+    updateCart(updatedCart);
+  }
   // const removeCart = (id) => {
   //   const newCart = newwCart.filter(product => product.id !==id);
   //   const updateNew = [newCart, ...newwCart]
@@ -66,21 +75,21 @@ const ShoppingCart  = () => {
   return(
     <ScrollView style={{flexDirection:'', paddingLeft:20,  paddingRight:20, backgroundColor:'white'}}>
       <View>
-      <Text style={{fontSize:20, textAlign:"auto", marginTop:10}}>Categories</Text>
-      <Text> {cart.length}</Text>
-           <ScrollView horizontal={true} style={{marginTop:25, flexDirection:'row'}}>
-             <View style={{backgroundColor:'whitesmoke',height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
-                <Button color="black" title="Phones" />
-             </View>
-             <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
-                <Button color="black" title="Laptops" />
-             </View>
-             <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
-                <Button color="black" title="Chargers" />
-             </View>
-             <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
-                <Button color="black" title="Earphones" />
-             </View>
+       <Text style={{fontSize:20, textAlign:"auto", marginTop:10}}>Categories</Text>
+          <Text> {cart.length}</Text>
+            <ScrollView horizontal={true} style={{marginTop:25, flexDirection:'row'}}>
+               <View style={{backgroundColor:'whitesmoke',height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+                  <Button color="black" title="Phones" />
+                </View>
+                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+                  <Button color="black" title="Laptops" />
+                </View>
+                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+                  <Button color="black" title="Chargers" />
+                </View>
+                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+                  <Button color="black" title="Earphones" />
+                </View>
            </ScrollView>
       </View>
       <Text style={{fontSize:20,marginTop:50}}>Shopping List</Text>
@@ -99,7 +108,7 @@ const ShoppingCart  = () => {
                   <View style={{marginBottom:20, marginTop:20, borderRadius:5}}>
                     {product.inCart ? (
                       <View style={{ }}>
-                           <Button color="red"   title=" remove from cart" onPress = {() => addProducts(product)} />
+                           <Button color="red"   title=" remove from cart" onPress = {() => removeProducts(product)} />
                       </View> 
                     ) : (
                       <Button color="black"   title="add to cart" onPress = {() => addProducts(product)} />
