@@ -54,7 +54,7 @@ const App = () => {
            </TouchableOpacity>
           ), 
           headerStyle: {
-            backgroundColor:"#528AD4"
+            backgroundColor:"#30AD88"
           }
           }}
          />

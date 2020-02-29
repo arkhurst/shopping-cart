@@ -7,7 +7,7 @@ const ListItem = [
     "product": "iPhone 6s",
     "price" : 950,
     "image" : require('../assets/phone.jpg'),
-     inCart:false
+     inCart:true
   },
   {
     "id": 2,
@@ -18,7 +18,7 @@ const ListItem = [
   },
   {
     "id": 3,
-    "product": "Huawei Mate",
+    "product": "Huawei ",
     "price" : 720,
     "image" : require('../assets/phone.jpg'),
      inCart:false
@@ -37,6 +37,14 @@ const ListItem = [
     "image" : require('../assets/phone.jpg'),
      inCart:false
   },
+  {
+    "id": 6,
+    "product": "Nokia",
+    "price" : 690,
+    "image" : require('../assets/phone.jpg'),
+     inCart:false
+  }
+  
 ]
 
 const ShoppingCart  = () => {
@@ -73,45 +81,49 @@ const ShoppingCart  = () => {
   //   setCart(updateNew);
   // }
   return(
-    <ScrollView style={{flexDirection:'', paddingLeft:20,  paddingRight:20, backgroundColor:'white'}}>
-      <View>
-       <Text style={{fontSize:20, textAlign:"auto", marginTop:10}}>Categories</Text>
+    <ScrollView style={{flexDirection:'',   backgroundColor:'#fofofo'}}>
+      <View style={{backgroundColor:"rgba(236,231,231,0.856)", paddingLeft:5, borderRadius:20}}>
+       <Text style={{fontSize:20, fontWeight:'400', marginTop:10, textAlign:'center', color:"#40617a"}}>Categories</Text>
           <Text> {cart.length}</Text>
             <ScrollView horizontal={true} style={{marginTop:25, flexDirection:'row'}}>
-               <View style={{backgroundColor:'whitesmoke',height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+               <View style={{backgroundColor:'whitesmoke',height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#30AD88", borderWidth:1.5}}>
                   <Button color="black" title="Phones" />
                 </View>
-                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#30AD88", borderWidth:1.5}}>
                   <Button color="black" title="Laptops" />
                 </View>
-                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#30AD88", borderWidth:1.5}}>
                   <Button color="black" title="Chargers" />
                 </View>
-                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#528AD4", borderWidth:1}}>
+                <View style={{backgroundColor:'whitesmoke', marginLeft: 15,height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#30AD88", borderWidth:1.5}}>
                   <Button color="black" title="Earphones" />
                 </View>
            </ScrollView>
       </View>
-      <Text style={{fontSize:20,marginTop:50}}>Shopping List</Text>
+      <Text style={{fontSize:20,marginTop:50, fontWeight:'400', textAlign:'center', color:"#40617a"}}>Shopping List</Text>
+      <View style={{flexDirection:'row', flexWrap:'wrap', paddingLeft:5, marginTop:20}}>
       {products.map(product => {
         return(
-          <View key={product.id} >
-            <View style={{ alignItems:'center', backgroundColor:'whitesmoke', justifyContent:'center', marginTop:20, paddingTop:30, borderRadius:8}}>
-               <Image source={product.image} style={{width:250, height:150}} />
-               <View style={{alignItems:'center', marginTop:10, flexDirection:'row', justifyContent:'space-between', paddingRight:20}}>
+          <View key={product.id} style={{marginTop:15, display:'flex', shadowColor:'#000',marginLeft:15, shadowOffset:{width:0, height:1}, shadowOpacity:0.1, borderRadius:10}} >
+            <View style={{flexDirection:'column', flex:1, paddingTop:30}}>
+              <View style={{ }}>
+                <Image source={product.image} style={{width:175, height:120, borderRadius:10}} />
+              </View>
+               <View style={{flex:-5, flexDirection:'row', justifyContent:'space-evenly', marginTop:20}}>
                  <Text style={{fontSize:15, fontWeight:'bold'}}> {product.product}</Text>
-                 <View style={{paddingLeft:100}}>
-                   <Text> GHS  {product.price}</Text>
-                 </View>
+                 <Text> GHS  {product.price}</Text>
                </View>
-               <View style={{flexDirection:'row'}}>
+               <View style={{flexDirection:''}}>
                   <View style={{marginBottom:20, marginTop:20, borderRadius:5}}>
                     {product.inCart ? (
-                      <View style={{ }}>
-                           <Button color="red"   title=" remove from cart" onPress = {() => removeProducts(product)} />
+                      <View style={{backgroundColor:'#F77752', borderRadius:10 }}>
+                           <Button color="white" title=" remove from cart" onPress = {() => removeProducts(id)} />
                       </View> 
                     ) : (
-                      <Button color="black"   title="add to cart" onPress = {() => addProducts(product)} />
+                      <View style={{backgroundColor:"#30AD88", borderRadius:5}}>
+                          <Button color="white" title="add to cart" onPress = {() => addProducts(product)} />
+                      </View>
+                    
                     )
                      
                   }
@@ -123,6 +135,7 @@ const ShoppingCart  = () => {
           </View>
         )
       })} 
+      </View>
     </ScrollView>
   );
 };
