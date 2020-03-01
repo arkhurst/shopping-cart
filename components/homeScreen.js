@@ -66,20 +66,15 @@ const ShoppingCart  = () => {
     updateCart(updatedCart)
   }
 
-  const removeProducts = (product) => {
-    const newCart = product.filter(product => product.id !==id)
-
+  const removeProducts = (id) => {
+    const updatedCart = cart.filter(cartItem => cartItem.id !== id)
+    let updatedProducts = products
+    const product = updatedProducts.find(prod => prod.id === id)
     product.inCart = false
-
-    const updatedCart = [newCart, ...cart]
-
+    setProducts(updatedProducts)
     updateCart(updatedCart);
   }
-  // const removeCart = (id) => {
-  //   const newCart = newwCart.filter(product => product.id !==id);
-  //   const updateNew = [newCart, ...newwCart]
-  //   setCart(updateNew);
-  // }
+  
   return(
     <ScrollView style={{flexDirection:'',   backgroundColor:'#fofofo'}}>
       <View style={{backgroundColor:"rgba(236,231,231,0.856)", paddingLeft:5, borderRadius:20}}>
