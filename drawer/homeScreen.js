@@ -1,5 +1,8 @@
-import React, {useState} from 'react';
-import {View, Text, Button, ScrollView, Image} from 'react-native';
+import React, { useState, useContext } from 'react';
+import { View, Text, Button, ScrollView, Image, Animated } from 'react-native';
+
+//importing the cartContext
+import {cartContext} from '../App'
 
 const ListItem = [
   {
@@ -7,25 +10,25 @@ const ListItem = [
     "product": "iPhone 6s",
     "price" : 950,
     "image" : require('../assets/phone.jpg'),
-     inCart:true
+     inCart:false
   },
   {
     "id": 2,
-    "product": "Galaxy S7",
+    "product": "Galaxy Tab",
     "price" : 650,
-    "image" : require('../assets/phone.jpg'),
+    "image" : require('../assets/galaxyTab.jpg'),
      inCart:false
   },
   {
     "id": 3,
-    "product": "Huawei ",
+    "product": " Surface 2 ",
     "price" : 720,
-    "image" : require('../assets/phone.jpg'),
+    "image" : require('../assets/images.jpg'),
      inCart:false
   },
   {
     "id": 4,
-    "product": "Razr",
+    "product": "Backpack",
     "price" : 500,
     "image" : require('../assets/phone.jpg'),
      inCart:false
@@ -47,39 +50,31 @@ const ListItem = [
   
 ]
 
-const ShoppingCart  = () => {
+const ShoppingCart  = (props) => {
 
   const [products, setProducts] = useState(ListItem);
-  const [cart, updateCart] = useState([]);
-  
+  const {addProducts, removeProducts} = useContext(cartContext);
+  const [fadeAnim] = useState(new Animated.Value(0));
 
-  const addProducts = (product) => {
-    const newProduct = {
-      id : product.id,
-      product : product.product,
-      price : product.price,
-
-    }
-    product.inCart = true;
-
-    const updatedCart = [newProduct, ...cart]
-    updateCart(updatedCart)
-  }
-
-  const removeProducts = (id) => {
-    const updatedCart = cart.filter(cartItem => cartItem.id !== id)
-    let updatedProducts = products
-    const product = updatedProducts.find(prod => prod.id === id)
-    product.inCart = false
-    setProducts(updatedProducts)
-    updateCart(updatedCart);
-  }
+  React.useEffect(() => {
+    Animated.timing(
+      fadeAnim,
+      {
+        toValue:1,
+        duration:10000
+      }
+    ).start();
+  }, [])
   
   return(
     <ScrollView style={{flexDirection:'',   backgroundColor:'#fofofo'}}>
       <View style={{backgroundColor:"rgba(236,231,231,0.856)", paddingLeft:5, borderRadius:20}}>
-       <Text style={{fontSize:20, fontWeight:'400', marginTop:10, textAlign:'center', color:"#40617a"}}>Categories</Text>
-          <Text> {cart.length}</Text>
+          <View style={{flexDirection:'row',paddingHorizontal:15, marginTop:19, justifyContent:'space-between', backgroundColor:"rgba(236,231,231,0.856)", paddingLeft:5, borderRadius:20}}>
+             <Text style={{marginLeft:10, fontSize:24, fontWeight:'400',marginTop:5,  textAlign:'center', color:"#40617a"}}>Categories</Text>
+             <View style={{borderColor:"black", backgroundColor:'white', borderWidth:1, borderRadius:10}}>
+                <Button title="View all" onPress={() => props.navigation.navigate("Product Category")}/>
+             </View>
+           </View>
             <ScrollView horizontal={true} style={{marginTop:25, flexDirection:'row'}}>
                <View style={{backgroundColor:'whitesmoke',height:50, width:120, justifyContent:'center', borderRadius:10, borderColor:"#30AD88", borderWidth:1.5}}>
                   <Button color="black" title="Phones" />
@@ -95,14 +90,14 @@ const ShoppingCart  = () => {
                 </View>
            </ScrollView>
       </View>
-      <Text style={{fontSize:20,marginTop:50, fontWeight:'400', textAlign:'center', color:"#40617a"}}>Shopping List</Text>
+      <Text style={{fontSize:20,marginTop:50, fontWeight:'400', textAlign:'center', color:"#40617a"}}>Available Products</Text>
       <View style={{flexDirection:'row', flexWrap:'wrap', paddingLeft:5, marginTop:20}}>
       {products.map(product => {
         return(
-          <View key={product.id} style={{marginTop:15, display:'flex', shadowColor:'#000',marginLeft:15, shadowOffset:{width:0, height:1}, shadowOpacity:0.1, borderRadius:10}} >
+          <View key={product.id} style={{marginTop:15, display:'flex', shadowColor:'#000',marginLeft:10, shadowOffset:{width:0, height:1}, shadowOpacity:0.1, borderRadius:10}} >
             <View style={{flexDirection:'column', flex:1, paddingTop:30}}>
               <View style={{ }}>
-                <Image source={product.image} style={{width:175, height:120, borderRadius:10}} />
+                <Image source={product.image} style={{width:185, height:180, borderRadius:10}} />
               </View>
                <View style={{flex:-5, flexDirection:'row', justifyContent:'space-evenly', marginTop:20}}>
                  <Text style={{fontSize:15, fontWeight:'bold'}}> {product.product}</Text>
@@ -112,20 +107,16 @@ const ShoppingCart  = () => {
                   <View style={{marginBottom:20, marginTop:20, borderRadius:5}}>
                     {product.inCart ? (
                       <View style={{backgroundColor:'#F77752', borderRadius:10 }}>
-                           <Button color="white" title=" remove from cart" onPress = {() => removeProducts(id)} />
+                           <Button color="white" title=" remove from cart" onPress = {() => removeProducts(product)} />
                       </View> 
                     ) : (
                       <View style={{backgroundColor:"#30AD88", borderRadius:5}}>
                           <Button color="white" title="add to cart" onPress = {() => addProducts(product)} />
-                      </View>
-                    
-                    )
-                     
-                  }
-                   
+                      </View>      
+                    )        
+                  }    
                  </View> 
-               </View>
-              
+               </View> 
             </View>
           </View>
         )
