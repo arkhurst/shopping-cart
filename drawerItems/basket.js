@@ -2,7 +2,8 @@ import React, { useContext, useState } from 'react';
 import {View, Text, Button, Image } from 'react-native';
 import { cartContext } from '../App';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import { MaterialIcons,Ionicons } from '@expo/vector-icons'
+import { MaterialIcons,Ionicons } from '@expo/vector-icons';
+import Lottie from 'lottie-react-native';
 import Payment from './paymentScreen';
 
 const Basket = () => {
@@ -10,7 +11,7 @@ const Basket = () => {
     const [mode, setMode] = useState(false);
 
     const closeButton = () => {
-        setMode(false);
+        setMode(false)
     }
 
     return(
@@ -53,7 +54,11 @@ const Basket = () => {
         }
         <View>
             {cart.length <= 0 ?
-                <Button disabled title="Your cart is empty"/> 
+              <View style={{alignItems:'center', justifyContent:'center'}}>
+                  <Text style={{fontSize:17}}>Oops! your cart is empty</Text>
+                 <Lottie source={require("../assets/4496-empty-cart.json")} autoPlay loop style={{height:150, width:200}} />
+              </View>  
+    
                 :
                 <TouchableOpacity onPress = {()=> {setMode(true)}}>
                     <View style={{borderRadius:10, backgroundColor: 'orange', marginBottom:100, height:40, width:255, marginLeft:90, justifyContent:'center', alignItems:'center'}}>
