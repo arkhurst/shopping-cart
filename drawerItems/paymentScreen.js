@@ -1,12 +1,21 @@
 import React, { useState, useContext } from 'react';
-import {View, Text, Modal, Picker, Button } from 'react-native';
+import {View, Text, Modal, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Dropdown } from 'react-native-material-dropdown';
 
 import { cartContext } from '../App';
 
 const PaymentScreen = ({visible, cancel}) => {
-    
+
+    let data = [{
+        value: 'MTN Mobile Money',
+      }, {
+        value: 'Visa Card',
+      }, {
+        value: 'Credit Card',
+      }];
+
     const {cart} = useContext(cartContext)
     const [paymentType, setPayment] = useState(false);
     
@@ -25,7 +34,7 @@ const PaymentScreen = ({visible, cancel}) => {
     }
     return(
         <Modal visible={visible} animationType="slide" presentationStyle="formSheet" >
-          <View style={{flex:1, flexDirection:'column',padding:30, marginTop:20}}>
+          <View style={{flex:1, flexDirection:'column',padding:30, justifyContent:'center'}}>
               <View style={{flexDirection:'row', justifyContent:'space-between'}}>
                 <Text style={{ fontSize: 24 }}>Payment Options</Text>
                 <TouchableOpacity style={{backgroundColor:'#fofofo'}} onPress={cancel}>
@@ -36,13 +45,11 @@ const PaymentScreen = ({visible, cancel}) => {
                     />
                 </TouchableOpacity>
               </View>
-              <Picker mode='dialog' onValueChange={changeState} style={{width:340 }}>
-                  <Picker.Item label="Select how you want to pay" value="MTN" />
-                  <Picker.Item label="Vodafone" value="Vodafone" />
-                  <Picker.Item label="Vodafone" value="Vodafone" />
-                  <Picker.Item label="Vodafone" value="Vodafone" />
-              </Picker>
-              <View style={{backgroundColor:"#30AD88", alignItems:'center', justifyContent:'center', height:80, borderTopEndRadius:20, borderTopStartRadius:20, overflow:'hidden'}}>
+               <Dropdown
+                 label="Select payment method"
+                 data={data}
+               />
+              <View style={{backgroundColor:"#30AD88",marginTop:30, alignItems:'center', justifyContent:'center', height:80, borderTopEndRadius:20, borderTopStartRadius:20, overflow:'hidden'}}>
                   <Text style={{color:'white', fontSize:20, fontWeight:"bold"}}>Total Order</Text>
                   <Text style={{color:'white', marginTop:10}}> ────────────────────</Text>
               </View>
