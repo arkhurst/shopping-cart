@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { View, Text, Button, ScrollView, Image, Animated } from 'react-native';
-
+import { SliderBox } from 'react-native-image-slider-box';
 //importing the cartContext
 import {cartContext} from '../App'
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -51,25 +51,35 @@ const ListItem = [
   
 ]
 
+const images = [
+  {
+    "id":0,
+    "images": require('../assets/images.jpg')
+  },
+  {
+    "id":2,
+    "images":   require('../assets/images.jpg')
+ },
+  {
+    "id":3,
+    "images":   require('../assets/images.jpg')
+  }
+]
+
 const ShoppingCart  = (props) => {
 
   const [products, setProducts] = useState(ListItem);
   const {addProducts, removeProducts} = useContext(cartContext);
-  const [fadeAnim] = useState(new Animated.Value(0));
 
-  React.useEffect(() => {
-    Animated.timing(
-      fadeAnim,
-      {
-        toValue:1,
-        duration:10000
-      }
-    ).start();
-  }, [])
+ 
   
   return(
     <ScrollView style={{flexDirection:'',   backgroundColor:'white'}}>
-      <Text style={{fontSize:20,marginTop:50, fontWeight:'400', textAlign:'center', color:"#40617a"}}>Available Products</Text>
+      <View style={{flex:1}}>
+        <SliderBox images={images}  sliderBoxHeight={250}  dotColor="#FFEE58" inactiveDotColor="#90A4AE"   paginationBoxVerticalPadding={20} autoplay circleLoop />
+      </View>
+     
+      <Text style={{fontSize:24,marginTop:50, fontWeight:'400', marginLeft:10, color:"#40617a"}}>Available Products</Text>
       <View style={{flexDirection:'row', flexWrap:'wrap', paddingLeft:5, marginTop:20}}>
       {products.map(product => {
         return(
@@ -80,7 +90,7 @@ const ShoppingCart  = (props) => {
               </View>
                <View style={{flex:-5, flexDirection:'row', justifyContent:'space-evenly', marginTop:20}}>
                  <Text style={{fontSize:15, fontWeight:'bold'}}> {product.product}</Text>
-                 <Text> GHS {""}
+                   <Text> GHS {""}
                      <Text style={{color:'tomato', fontWeight:'bold'}}>
                       {product.price}
                      </Text>
