@@ -10,7 +10,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 // Drawer components
 import HomeScreen from './drawer/homeScreen';
 import Basket from './drawerItems/basket';
-import Categories from './drawerItems/categories';
+import Categories from './drawerItems/favourite';
 import Profile from './drawerItems/profile';
 import Settings from './drawerItems/settings';
 import Phones from './tabs/phones';
