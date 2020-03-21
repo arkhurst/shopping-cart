@@ -8,9 +8,9 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 const ListItem = [
   {
     "id": 1,
-    "product": "iPhone 6s",
+    "product": "iPhone XR",
     "price" : 950,
-    "image" : require('../assets/galaxyTab.jpg'),
+    "image" : require('../assets/xr.jpg'),
      inCart:false
   },
   {
@@ -22,30 +22,30 @@ const ListItem = [
   },
   {
     "id": 3,
-    "product": " Surface 2 ",
+    "product": " Surface Pro 4 ",
     "price" : 720,
-    "image" : require('../assets/galaxyTab.jpg'),
+    "image" : require('../assets/pro4.png'),
      inCart:false
   },
   {
     "id": 4,
     "product": "Backpack",
     "price" : 500,
-    "image" : require('../assets/galaxyTab.jpg'),
+    "image" : require('../assets/bag.jpg'),
      inCart:false
   },
   {
     "id": 5,
-    "product": "Oppo Reno",
+    "product": "Spy-camera",
     "price" : 690,
-    "image" : require('../assets/galaxyTab.jpg'),
+    "image" : require('../assets/spy.jpg'),
      inCart:false
   },
   {
     "id": 6,
-    "product": "Nokia",
+    "product": "DockCase",
     "price" : 690,
-    "image" : require('../assets/galaxyTab.jpg'),
+    "image" : require('../assets/dockcase.jpg'),
      inCart:false
   }
   
@@ -94,7 +94,7 @@ const ShoppingCart  = (props) => {
   
   return(
     <ScrollView style={{flexDirection:'',   backgroundColor:'white'}}>
-            <Text style={{fontSize:24,marginTop:20, fontWeight:'400', marginLeft:10, color:"#40617a"}}>Hot Deals
+            <Text style={{fontSize:20,marginTop:20, fontWeight:'bold', marginLeft:10, color:"#40617a"}}>Hot Deals
               <Text style={{color:"#FC1055",fontWeight:'400',fontSize:16,fontFamily:'GillSans-Italic'}}>
                 {""} 50% off 
               </Text>
@@ -129,14 +129,19 @@ const ShoppingCart  = (props) => {
         ))}
       </Carousel>
      
-      <Text style={{fontSize:24,marginTop:50, fontWeight:'400', marginLeft:10, color:"#40617a"}}>Available Products</Text>
-      <View style={{flexDirection:'row', flexWrap:'wrap', paddingLeft:5, marginTop:20}}>
+  
+       <Text style={{fontSize:20,marginTop:30, fontWeight:'bold', marginLeft:10, color:"#40617a"}}>Available Products</Text>
+  
+      <View style={{flexDirection:'row', flexWrap:'wrap', paddingLeft:5, marginTop:5}}>
       {products.map(product => {
         return(
-          <View key={product.id} style={{marginTop:15, display:'flex', shadowColor:'#000',marginLeft:10, shadowOffset:{width:0, height:1}, shadowOpacity:0.1, borderRadius:10}} >
+          <View key={product.id} style={{marginTop:10, display:'flex', shadowColor:'#000',marginLeft:10, shadowOffset:{width:0, height:1}, shadowOpacity:0.1, borderRadius:10}} >
             <View style={{flexDirection:'column', flex:1,backgroundColor: "white", shadowColor: '#000', shadowOpacity: .1, shadowOffset: {width: 0, height: 1}, paddingTop:30}}>
               <View style={{ }}>
                 <Image source={product.image} style={{width:190, height:190, borderRadius:10}} />
+                 <View style={{position: 'absolute',right:5, bottom:30,backgroundColor:'#90e8fc',marginBottom: 150, padding: 10, width:60, height:35,borderRadius:5}}>
+                   <Text style={{fontWeight:'bold'}}>-58%</Text>
+                 </View>
               </View>
                <View style={{flex:-5, flexDirection:'row', justifyContent:'space-evenly', marginTop:20}}>
                  <Text style={{fontSize:15, fontWeight:'bold'}}> {product.product}</Text>
