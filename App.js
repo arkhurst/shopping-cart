@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text } from 'react-native';
-import { FontAwesome, Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
@@ -67,7 +67,7 @@ const App = () => {
   }
 
 // HomeStack 
- const createHomeStack = (props) =>
+ const createHomeStack = () =>
         <Stack.Navigator>
               <Stack.Screen 
               name="Home" 
@@ -99,39 +99,39 @@ const App = () => {
               }
               }}
               />
-              <Stack.Screen  
+              {/* <Stack.Screen  
               name="Product Category"
               children={createTopTab}
               options={{
                 headerStyle: {backgroundColor:'fff'                    
               }}}
-              />
+              /> */}
         </Stack.Navigator>
 
 //Function for Tabs for  item categories
-    const createTopTab = () => 
-         <MaterialTopTab.Navigator>
-             <MaterialTopTab.Screen
-               name="Phones"
-               component={Phones}
-               options={{title:'Phones'}}
-               tabBarOptions={{ 
-                 labelStyle: { fontSize: 12 },
-                 tabStyle: { width: 100 },
-                 style: { backgroundColor: 'powderblue' }
-              }}
-             />
-             <MaterialTopTab.Screen
-                name="Tablets"
-                component={Tablets}
-                options={{title:'Tablets'}}
-                tabBarOptions={{ 
-                  labelStyle: { fontSize: 12 },
-                  tabStyle: { width: 100 },
-                  style: { backgroundColor: 'powderblue' }
-              }}
-             />
-         </MaterialTopTab.Navigator>
+    // const createTopTab = () => 
+    //      <MaterialTopTab.Navigator>
+    //          <MaterialTopTab.Screen
+    //            name="Phones"
+    //            component={Phones}
+    //            options={{title:'Phones'}}
+    //            tabBarOptions={{ 
+    //              labelStyle: { fontSize: 12 },
+    //              tabStyle: { width: 100 },
+    //              style: { backgroundColor: 'powderblue' }
+    //           }}
+    //          />
+    //          <MaterialTopTab.Screen
+    //             name="Tablets"
+    //             component={Tablets}
+    //             options={{title:'Tablets'}}
+    //             tabBarOptions={{ 
+    //               labelStyle: { fontSize: 12 },
+    //               tabStyle: { width: 100 },
+    //               style: { backgroundColor: 'powderblue' }
+    //           }}
+    //          />
+    //      </MaterialTopTab.Navigator>
    
    // Drawer stack
    const  createDrawer = () =>
@@ -141,35 +141,28 @@ const App = () => {
                 name="Home" 
                 component={HomeScreen}
                 options = {{
-                  drawerIcon: () => <Ionicons name = "ios-home" size={26} color="green" />,
+                  drawerIcon: () => <Ionicons name = "ios-home" size={26} color="#30AD88" />,
                 }}
              />
-            <Drawer.Screen 
-                name="Favourites" 
-                component={Categories}
-                options = {{
-                  drawerIcon: () => <MaterialIcons  name = "favorite" size={20} color="green" />,
-                }}
-            />
              <Drawer.Screen 
                 name="Basket" 
                 component={Basket}
                 options = {{
-                  drawerIcon: () => <Ionicons name = "ios-basket" size={26} color="green" />
+                  drawerIcon: () => <Ionicons name = "ios-basket" size={26} color="#30AD88" />
                 }}
                 />
             <Drawer.Screen 
                 name="Account" 
                 component={Profile}
                 options = {{
-                  drawerIcon: () => <MaterialIcons name = "account-circle" size={26} color="green" />
+                  drawerIcon: () => <FontAwesome name = "user-o" size={26} color="#30AD88" />
                 }}
                 />
             <Drawer.Screen 
                 name="Settings" 
                 component={Settings}
                 options = {{
-                  drawerIcon: () => <Ionicons name = "ios-settings" size={26} color="green" />
+                  drawerIcon: () => <Ionicons name = "ios-settings" size={26} color="#30AD88" />
                 }}
              />
           </Drawer.Navigator>
