@@ -100,7 +100,7 @@ const ShoppingCart  = (props) => {
               </Text>
             </Text>
       <Carousel 
-        style={{flex:1, width:390, height:240, backgroundColor: "white", shadowColor: '#000', shadowOpacity: .1, shadowOffset: {width: 0, height: 1}}} 
+        style={{flex:1, marginTop:10, width:390, height:240, backgroundColor: "white", shadowColor: '#000', shadowOpacity: .1, shadowOffset: {width: 0, height: 1}}} 
         delay={3000}
         autoplay
         isLooped

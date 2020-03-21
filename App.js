@@ -27,9 +27,11 @@ const MaterialTopTab = createMaterialTopTabNavigator();
   return(
     <View>
       <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
-        <Text style={{fontSize:25, color:'white', fontFamily:'Palatino-Italic'}}>Shopping Cart</Text>
+        <Text style={{fontSize:25, color:'white', }}>Dejays {""}
+            <Text style={{fontFamily:'Palatino-Italic', fontWeight:'bold'}}>Store</Text>
+        </Text>
       </View>
-      <View style={{ width:16, height:16,  backgroundColor:'red', borderRadius:15, justifyContent:'center', alignItems:'center' , marginLeft:380, flexDirection:'row'}}>
+      <View style={{ width:16, height:16,  backgroundColor:'tomato', borderRadius:15, justifyContent:'center', alignItems:'center' , marginLeft:380, flexDirection:'row'}}>
         <Text style={{fontSize:10, color:'white'}}>{count}</Text>
       </View>
     </View>
