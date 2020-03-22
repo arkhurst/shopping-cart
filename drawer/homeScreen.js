@@ -9,28 +9,28 @@ const ListItem = [
   {
     "id": 1,
     "product": "iPhone XR",
-    "price" : 950,
+    "price" : 2900,
     "image" : require('../assets/xr.jpg'),
      inCart:false
   },
   {
     "id": 2,
     "product": "Galaxy Tab",
-    "price" : 650,
+    "price" : 1450,
     "image" : require('../assets/galaxyTab.jpg'),
      inCart:false
   },
   {
     "id": 3,
     "product": " Surface Pro 4 ",
-    "price" : 720,
+    "price" : 1700,
     "image" : require('../assets/pro4.png'),
      inCart:false
   },
   {
     "id": 4,
     "product": "Backpack",
-    "price" : 500,
+    "price" : 70,
     "image" : require('../assets/bag.jpg'),
      inCart:false
   },
@@ -44,7 +44,7 @@ const ListItem = [
   {
     "id": 6,
     "product": "DockCase",
-    "price" : 690,
+    "price" : 90,
     "image" : require('../assets/dockcase.jpg'),
      inCart:false
   }
