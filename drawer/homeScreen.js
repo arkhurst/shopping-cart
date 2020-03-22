@@ -90,7 +90,6 @@ const ShoppingCart  = (props) => {
   const [hotDeals, setHotDeals] = useState(HotDeals)
   const {addProducts, removeProducts} = useContext(cartContext);
 
- 
   
   return(
     <ScrollView style={{backgroundColor:'white'}}>

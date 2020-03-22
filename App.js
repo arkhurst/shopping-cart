@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text } from 'react-native';
@@ -44,8 +44,11 @@ const App = () => {
   const [cart, setCart] = React.useState([]);
   const [fav, setFav] = React.useState([]);
 
+ 
+ 
   // Adding products to cart
   const addProducts = (product) => {
+   
     const newProduct = {
       id : product.id,
       product : product.product,
