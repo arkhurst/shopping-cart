@@ -1,10 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import {View, Text, Modal, Button } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { Dropdown } from 'react-native-material-dropdown';
 
-import { cartContext } from '../App';
+import { cartContext } from '../../App';
+import Loading from './loading';
 
 const PaymentScreen = ({visible, cancel}) => {
 
@@ -18,6 +19,27 @@ const PaymentScreen = ({visible, cancel}) => {
 
     const {cart} = useContext(cartContext)
     const [paymentType, setPayment] = useState(false);
+    const [done, setDone] = useState(undefined);
+    const [loading, setLoading] = useState(undefined);
+
+    useEffect(() =>{
+        makePayment();
+    }, []);
+
+    const makePayment = () => {
+        setDone(undefined);
+        setLoading(undefined);
+
+        setTimeout(() => {
+            fetch('https://aws.random.cat./meow')
+            .then(res => res.json())
+            .then(data => data.file);
+            setLoading(true);
+            setTimeout(() => {
+                setDone(true);
+            },1000)
+        }, 2500)
+    }
     
     const changeState = () => {
         paymentType = true
@@ -33,8 +55,8 @@ const PaymentScreen = ({visible, cancel}) => {
         return price
     }
     return(
-        <Modal visible={visible} animationType="slide" presentationStyle="formSheet" >
-          <View style={{flex:1, flexDirection:'column',padding:30, justifyContent:'center'}}>
+        <Modal visible={visible} animationType="slide" >
+          <View style={{flex:1, flexDirection:'column',padding:30, marginTop:80}}>
               <View style={{flexDirection:'row', justifyContent:'space-between'}}>
                 <Text style={{ fontSize: 24 }}>Payment Options</Text>
                 <TouchableOpacity style={{backgroundColor:'#fofofo'}} onPress={cancel}>
@@ -77,7 +99,12 @@ const PaymentScreen = ({visible, cancel}) => {
               </View>
 
               <View style={{width:160, height:40, backgroundColor:'#30AD88', marginTop:70, marginLeft:100, borderRadius:5}}>
-                  <Button title="Proceed" color="white" />
+                  <Button onPress={makePayment} title="Proceed" color="white" />
+                  {!done ? (
+                      <Loading loading={loading} />
+                  ) : (
+                      <Text></Text>
+                  )}
               </View>
           </View>
         </Modal>

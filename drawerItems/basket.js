@@ -4,7 +4,7 @@ import { cartContext } from '../App';
 import { ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import { MaterialIcons,Ionicons } from '@expo/vector-icons';
 import Lottie from 'lottie-react-native';
-import Payment from './paymentScreen';
+import Payment from './paymentScreen/paymentScreen';
 
 const Basket = () => {
     const {cart, removeProducts, addToFav} = useContext(cartContext);
