@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons, Ionicons } from '@expo/vector-icons';
 
-const Profile = () => {
+const Profile = ({navigation}) => {
     return(
         <View style={styles.container}>
             <View style={styles.welcome}>
@@ -21,7 +21,7 @@ const Profile = () => {
                    <MaterialIcons name="rate-review" size={25}  />
                    <Text style={{marginTop:5, fontWeight:'bold',marginLeft:20}}>Ratings & Reviews</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={{flexDirection:'row'}}>
+                <TouchableOpacity onPress={() => {navigation.navigate('fav')}} style={{flexDirection:'row'}}>
                    <Ionicons name="ios-heart-empty" size={25}  />
                    <Text style={{marginTop:5, fontWeight:'bold',marginLeft:20}}>Saved Items</Text>
                 </TouchableOpacity>

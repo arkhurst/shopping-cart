@@ -93,7 +93,7 @@ const ShoppingCart  = (props) => {
  
   
   return(
-    <ScrollView style={{flexDirection:'',   backgroundColor:'white'}}>
+    <ScrollView style={{backgroundColor:'white'}}>
             <Text style={{fontSize:20,marginTop:20, fontWeight:'bold', marginLeft:10, color:"#40617a"}}>Hot Deals
               <Text style={{color:"#FC1055",fontWeight:'400',fontSize:16,fontFamily:'GillSans-Italic'}}>
                 {""} 50% off 

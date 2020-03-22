@@ -10,11 +10,11 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 // Drawer components
 import HomeScreen from './drawer/homeScreen';
 import Basket from './drawerItems/basket';
-import Categories from './drawerItems/favourite';
 import Profile from './drawerItems/profile';
 import Settings from './drawerItems/settings';
-import Phones from './tabs/phones';
-import Tablets from './tabs/tablets';
+import Fav from './screens/fav';
+// import Phones from './tabs/phones';
+// import Tablets from './tabs/tablets';
 
 export const cartContext = React.createContext({});
 
@@ -42,7 +42,9 @@ const MaterialTopTab = createMaterialTopTabNavigator();
 const App = () => {
 
   const [cart, setCart] = React.useState([]);
+  const [fav, setFav] = React.useState([]);
 
+  // Adding products to cart
   const addProducts = (product) => {
     const newProduct = {
       id : product.id,
@@ -66,6 +68,27 @@ const App = () => {
     product.inCart = false;
   }
 
+  //adding to favourites
+  const addToFav = (product) => {
+    const newFav = {
+      id: product.id,
+      product : product.product,
+      price : product.price,
+      image: product.image
+    }
+
+    const addedFav = [newFav, ...fav]
+    setFav(addedFav);
+  }
+
+    
+  const removeFav = (product) => {
+    let newFav = fav.filter((removeItem) => {
+      return removeItem.id !== product.id
+    })
+
+  }
+
 // HomeStack 
  const createHomeStack = () =>
         <Stack.Navigator>
@@ -73,9 +96,6 @@ const App = () => {
               name="Home" 
               children={createDrawer}
               options={{
-                headerStyle: {
-                backgroundColor: 'whitesmoke',
-              },
               headerTitle: () => < LogoTitle count={cart.length} />,
               headerLeft: () => (
                   <TouchableOpacity style={{marginLeft:15, marginBottom:5}} >
@@ -106,6 +126,23 @@ const App = () => {
                 headerStyle: {backgroundColor:'fff'                    
               }}}
               /> */}
+              <Stack.Screen 
+               name="fav"
+               component={Fav}
+               options={{
+                headerTitle: () => (
+                    <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
+                      <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Favourites
+                      </Text>
+                    </View>
+                ),
+                headerStyle: {
+                  backgroundColor:"#30AD88"
+                },
+                headerBackTitleVisible:false,
+      
+               }}
+              />
         </Stack.Navigator>
 
 //Function for Tabs for  item categories
@@ -169,7 +206,7 @@ const App = () => {
 
 
       return(
-        <cartContext.Provider value={{cart, addProducts, removeProducts}}>
+        <cartContext.Provider value={{cart, addProducts, removeProducts, fav, addToFav, removeFav}}>
           <NavigationContainer>
               {createHomeStack()}
           </NavigationContainer>

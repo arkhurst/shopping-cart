@@ -1,19 +1,45 @@
 import React, { useContext, useState } from 'react';
-import {View, Text, Button, Image } from 'react-native';
+import {View, Text, Button, Image , Animated, TouchableWithoutFeedback } from 'react-native';
 import { cartContext } from '../App';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
 import { MaterialIcons,Ionicons } from '@expo/vector-icons';
 import Lottie from 'lottie-react-native';
 import Payment from './paymentScreen';
 
 const Basket = () => {
-    const {cart, removeProducts} = useContext(cartContext);
+    const {cart, removeProducts, addToFav} = useContext(cartContext);
     const [mode, setMode] = useState(false);
+    const [  like, setLike] = useState(new Animated.Value(0))
 
     const closeButton = () => {
         setMode(false)
     }
 
+    let lastTap = null;
+    const likeController = () => {
+        let now = Date.now();
+        let minimumDuration = 300;
+        if(lastTap && (now-lastTap) < minimumDuration){
+            Animated.sequence([
+                Animated.timing(like, {
+                    toValue:1,
+                    duration:500
+                }),
+                Animated.timing(like, {
+                    toValue:1,
+                    duration:500
+                }),
+                Animated.timing(like, {
+                    toValue:0,
+                    duration:500
+                })
+            ]).start()
+        }else{
+            lastTap = now;
+        }
+
+     
+    }
     return(
         <View style={{flex:1, backgroundColor:'#dbdbdb'}}>
             {cart.length > 0 ? 
@@ -22,7 +48,14 @@ const Basket = () => {
                   return(
                       <View key={product.id}>
                           <View style={{paddingVertical:20, paddingLeft:10 ,display:'flex', flexDirection:'row', backgroundColor:'whitesmoke', shadowColor:'#000', marginTop:20, borderRadius:15}}>
-                            <Image source={product.image} style={{height:90, width:80}} />
+                           <TouchableWithoutFeedback onPress={likeController}>
+                             <View>
+                               <Image source={product.image} style={{height:90, width:80}} />
+                               <Animated.View style={{position:'absolute',width:430, height:430,opacity:like }}>
+                                  <Ionicons name="ios-heart" size={90} color="orange" />
+                               </Animated.View>
+                             </View>
+                           </TouchableWithoutFeedback>
                             <View style={{paddingLeft:10, marginTop:10}}>
                               <Text style={{fontSize:16,fontWeight:'bold'}}>{product.product}</Text>
                               <View style={{flexDirection:'row', marginTop:30}}>
