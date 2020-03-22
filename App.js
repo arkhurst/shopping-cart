@@ -86,7 +86,7 @@ const App = () => {
     let newFav = fav.filter((removeItem) => {
       return removeItem.id !== product.id
     })
-
+    setFav(newFav);
   }
 
 // HomeStack 

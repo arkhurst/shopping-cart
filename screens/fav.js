@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { View, Text, TouchableOpacity,   } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, Image  } from 'react-native';
 import { cartContext } from '../App';
+import {Ionicons} from '@expo/vector-icons';
 
 const Fav = ({ navigation }) => {
 

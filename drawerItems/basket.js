@@ -59,7 +59,7 @@ const Basket = () => {
                             <View style={{paddingLeft:10, marginTop:10}}>
                               <Text style={{fontSize:16,fontWeight:'bold'}}>{product.product}</Text>
                               <View style={{flexDirection:'row', marginTop:30}}>
-                                  <TouchableOpacity>
+                                  <TouchableOpacity onPress={() => addToFav(product)}>
                                     <MaterialIcons 
                                     name="favorite-border"
                                     size={26}
