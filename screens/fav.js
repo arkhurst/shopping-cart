@@ -6,7 +6,15 @@ import {Ionicons} from '@expo/vector-icons';
 const Fav = ({ navigation }) => {
 
     const { fav, removeFav} = useContext(cartContext);
-    
+    React.useLayoutEffect(() => {
+      navigation.setOptions({
+          headerLeft: () => (
+              <TouchableOpacity onPress={() => navigation.goBack()} style={{ width:32, height:32,borderRadius:16, backgroundColor:"rgba(21,22,48,0.1)", justifyContent:'center',alignItems:'center', marginLeft:20}}>
+                <Ionicons name="ios-arrow-round-back" size={32} color="#fff"  />
+              </TouchableOpacity>
+            ),
+      });
+    }, [navigation]);
     return(
         <View style={{flex:1, backgroundColor:'#dbdbdb'}}>
         {fav.length > 0 ? 

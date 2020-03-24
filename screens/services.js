@@ -1,10 +1,20 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import { MaterialCommunityIcons,FontAwesome } from '@expo/vector-icons';
+import { TouchableWithoutFeedback, TouchableOpacity } from 'react-native-gesture-handler';
+import { MaterialCommunityIcons,FontAwesome, Ionicons } from '@expo/vector-icons';
 
 
-const Services = () => {
+const Services = ({ navigation }) => {
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ width:32, height:32,borderRadius:16, backgroundColor:"rgba(21,22,48,0.1)", justifyContent:'center',alignItems:'center', marginLeft:20}}>
+                  <Ionicons name="ios-arrow-round-back" size={32} color="#fff"  />
+                </TouchableOpacity>
+              ),
+        });
+      }, [navigation]);
     return(
         <View style={styles.container}>
              <Text style={{fontWeight:'500', marginTop:30,paddingHorizontal:15}}>Our Services</Text>

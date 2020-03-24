@@ -5,7 +5,8 @@ import { View, Text } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+
 
 // Drawer components
 import HomeScreen from './drawer/homeScreen';
@@ -161,8 +162,11 @@ const App = () => {
                   backgroundColor:"#30AD88"
                 },
                 headerBackTitleVisible:false,
+                
+                
       
                }}
+               
               />
         </Stack.Navigator>
 
