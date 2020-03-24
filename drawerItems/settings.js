@@ -3,12 +3,12 @@ import {View, Text, StyleSheet} from 'react-native';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { Ionicons } from '@expo/vector-icons';
 
-const Settings = () => {
+const Settings = ({ navigation }) => {
     return(
         <View style={styles.container}>
             <Text style={{fontWeight:'500', marginTop:30,paddingHorizontal:15}}>About DEJAYS</Text>
             <View style={styles.itemContainer}>
-                <TouchableWithoutFeedback>
+                <TouchableWithoutFeedback onPress={()=> {navigation.navigate('services')}}>
                     <View style={styles.items}>
                       <Text style={{fontWeight:'bold', color:'grey'}}>Our Services</Text>
                       <Ionicons name="ios-arrow-forward" size={25}  color='grey' />

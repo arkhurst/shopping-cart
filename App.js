@@ -13,6 +13,7 @@ import Basket from './drawerItems/basket';
 import Profile from './drawerItems/profile';
 import Settings from './drawerItems/settings';
 import Fav from './screens/fav';
+import Services from './screens/services';
 // import Phones from './tabs/phones';
 // import Tablets from './tabs/tablets';
 
@@ -136,6 +137,23 @@ const App = () => {
                 headerTitle: () => (
                     <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
                       <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Favourites
+                      </Text>
+                    </View>
+                ),
+                headerStyle: {
+                  backgroundColor:"#30AD88"
+                },
+                headerBackTitleVisible:false,
+      
+               }}
+              />
+              <Stack.Screen 
+               name="services"
+               component={Services}
+               options={{
+                headerTitle: () => (
+                    <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
+                      <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Services
                       </Text>
                     </View>
                 ),

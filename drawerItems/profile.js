@@ -14,15 +14,15 @@ const Profile = ({navigation}) => {
              <Text style={{fontWeight:'bold', marginTop:10,paddingHorizontal:15, color:'grey'}}>MY ACCOUNT</Text>
             <View style={styles.itemContainer}>
                 <TouchableOpacity style={{flexDirection:'row'}}>
-                   <MaterialCommunityIcons name="shopify" size={25}  />
-                   <Text style={{marginTop:5, fontWeight:'bold',marginLeft:20}}>Orders</Text>
+                   <MaterialCommunityIcons name="shopify" size={25} color="#30AD88"  />
+                     <Text style={{marginTop:5, fontWeight:'bold',marginLeft:20}}>Orders</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={{flexDirection:'row'}}>
-                   <MaterialIcons name="rate-review" size={25}  />
+                   <MaterialIcons name="rate-review" size={25} color="#30AD88"  />
                    <Text style={{marginTop:5, fontWeight:'bold',marginLeft:20}}>Ratings & Reviews</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => {navigation.navigate('fav')}} style={{flexDirection:'row'}}>
-                   <Ionicons name="ios-heart-empty" size={25}  />
+                   <Ionicons name="ios-heart-empty" size={25} color="#30AD88" />
                    <Text style={{marginTop:5, fontWeight:'bold',marginLeft:20}}>Saved Items</Text>
                 </TouchableOpacity>
             </View>
