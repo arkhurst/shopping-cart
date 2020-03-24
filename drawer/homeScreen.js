@@ -84,7 +84,7 @@ const HotDeals = [
   }
 ]
 
-const ShoppingCart  = (props) => {
+const ShoppingCart  = () => {
 
   const [products, setProducts] = useState(ListItem);
   const [hotDeals, setHotDeals] = useState(HotDeals)
@@ -92,8 +92,8 @@ const ShoppingCart  = (props) => {
 
   
   return(
-    <ScrollView style={{backgroundColor:'white'}}>
-            <Text style={{fontSize:20,marginTop:20, fontWeight:'bold', marginLeft:10, color:"#40617a"}}>Hot Deals
+    <ScrollView style={{backgroundColor:'white'}} showsVerticalScrollIndicator={false}>
+            <Text style={{fontSize:17,marginTop:20, fontWeight:'bold', marginLeft:10, color:"#40617a"}}>Hot Deals
               <Text style={{color:"#FC1055",fontWeight:'400',fontSize:16,fontFamily:'GillSans-Italic'}}>
                 {""} 50% off 
               </Text>
@@ -129,7 +129,7 @@ const ShoppingCart  = (props) => {
       </Carousel>
      
   
-       <Text style={{fontSize:20,marginTop:30, fontWeight:'bold', marginLeft:10, color:"#40617a"}}>Available Products</Text>
+       <Text style={{fontSize:17,marginTop:30, fontWeight:'bold', marginLeft:10, color:"#40617a"}}>Available Products</Text>
   
       <View style={{flexDirection:'row', flexWrap:'wrap', paddingLeft:5, marginTop:5}}>
       {products.map(product => {
@@ -143,7 +143,7 @@ const ShoppingCart  = (props) => {
                  </View>
               </View>
                <View style={{flex:-5, flexDirection:'row', justifyContent:'space-evenly', marginTop:20}}>
-                 <Text style={{fontSize:15, fontWeight:'bold'}}> {product.product}</Text>
+                 <Text style={{fontSize:14, fontWeight:'bold'}}> {product.product}</Text>
                    <Text> GHS {""}
                      <Text style={{color:'tomato', fontWeight:'bold'}}>
                       {product.price}

@@ -27,17 +27,11 @@ const MaterialTopTab = createMaterialTopTabNavigator();
 //Custom header function
  const LogoTitle = ({count}) => {
   return(
-    <View>
       <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
-        <Text style={{fontSize:25, color:'white', }}>Dejays {""}
+        <Text style={{fontSize:23, color:'white', }}>Dejays {""}
             <Text style={{fontFamily:'Palatino-Italic', fontWeight:'bold'}}>Store</Text>
         </Text>
       </View>
-      <View style={{ width:16, height:16,  backgroundColor:'tomato', borderRadius:15, justifyContent:'center', alignItems:'center' , marginLeft:380, flexDirection:'row'}}>
-        <Text style={{fontSize:10, color:'white'}}>{count}</Text>
-      </View>
-    </View>
-    
   );
 };
 
@@ -101,9 +95,9 @@ const App = () => {
               name="Home" 
               children={createDrawer}
               options={{
-              headerTitle: () => < LogoTitle count={cart.length} />,
+              headerTitle: () => < LogoTitle  />,
               headerLeft: () => (
-                  <TouchableOpacity style={{marginLeft:15, marginBottom:5}} >
+                  <TouchableOpacity style={{marginLeft:15}} >
                     <Ionicons 
                     name="ios-menu"
                     size={26}
@@ -112,11 +106,14 @@ const App = () => {
                   </TouchableOpacity>
               ),
               headerRight: () => (
-                <TouchableOpacity  style={{ marginRight:20, marginBottom:5}}>
+                <TouchableOpacity  style={{ marginRight:20}}>
                     <FontAwesome 
                     name="cart-plus"
                     size={26}
-                    color="white" />    
+                    color="white" /> 
+                     <View style={{position:'absolute', width:16, height:16,  backgroundColor:'tomato', borderRadius:15, justifyContent:'center', alignItems:'center', left:15, bottom:10}}>
+                         <Text style={{fontSize:10, color:'white'}}>{cart.length}</Text>
+                   </View>   
                 </TouchableOpacity>
               ), 
               headerStyle: {
@@ -162,7 +159,11 @@ const App = () => {
                   backgroundColor:"#30AD88"
                 },
                 headerBackTitleVisible:false,
-                
+                headerLeft: () => (
+                  <TouchableOpacity onPress={() => navigation.goBack()} style={{ width:32, height:32,borderRadius:16, backgroundColor:"rgba(21,22,48,0.1)", justifyContent:'center',alignItems:'center', marginLeft:20}}>
+                    <Ionicons name="ios-arrow-round-back" size={32} color="#e9446a"  />
+                  </TouchableOpacity>
+                ),
                 
       
                }}
