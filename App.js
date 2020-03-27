@@ -19,6 +19,7 @@ import LoginScreen from './screens/login/login';
 import Fav from './screens/favourites/fav';
 import Services from './screens/services/services';
 import SignUp from './screens/signUp/signUp';
+import Loading from './screens/welcome/loading';
 // import Phones from './tabs/phones';
 // import Tablets from './tabs/tablets';
 
@@ -95,6 +96,13 @@ const App = () => {
 // HomeStack 
  const createHomeStack = () =>
         <Stack.Navigator>
+              <Stack.Screen 
+                 name="Loading"
+                 component={Loading}
+                 options={{
+                   headerShown:false
+                 }}
+              />
               <Stack.Screen 
                name="Login"
                component={LoginScreen}
