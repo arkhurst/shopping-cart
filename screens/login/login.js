@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, ImageBackground,Dimensions, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import LoadingAnim from '../LoadingAnimation';
 
 const {width, height} = Dimensions.get('window');
 
 const Login = ({ navigation}) => {
+    const [loading, setLoading] = useState(undefined)
+
+    const loginHandler = () => {
+        setLoading(true)
+        setTimeout(() => {
+           setLoading(false)
+           navigation.navigate('Home')
+        },4000)
+    }
     return(
         <SafeAreaView style={styles.container}>
             <View style={{flexDirection:"row", justifyContent:'space-between'}}>
@@ -39,9 +49,10 @@ const Login = ({ navigation}) => {
                 <Text style={styles.forgotPassword}>Forgot Password?</Text>
             </TouchableOpacity>
             {/* Login Button */}
-            <TouchableOpacity onPress={ () => navigation.navigate('Home')} style={styles.loginBtn}>
+            <TouchableOpacity onPress={ () => loginHandler()} style={styles.loginBtn}>
                 <Text style={{color:"#30AD88", fontSize:15, fontWeight:'bold'}}>Log in</Text>
             </TouchableOpacity>
+            <LoadingAnim loading={loading} />
             {/* Join Us */}
             <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                 <Text style={styles.joinUs}>Don't have an account with us? 
