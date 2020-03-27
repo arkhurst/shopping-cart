@@ -18,6 +18,7 @@ import Settings from './drawerItems/settings';
 import LoginScreen from './screens/login/login';
 import Fav from './screens/favourites/fav';
 import Services from './screens/services/services';
+import SignUp from './screens/signUp/signUp';
 // import Phones from './tabs/phones';
 // import Tablets from './tabs/tablets';
 
@@ -100,6 +101,13 @@ const App = () => {
                options={{
                  headerShown:false
                }}
+              />
+              <Stack.Screen 
+                 name="SignUp"
+                 component={SignUp}
+                 options={{
+                   headerShown:false
+                 }}
               />
               <Stack.Screen 
               name="Home" 

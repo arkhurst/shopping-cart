@@ -1,22 +1,21 @@
 import React from 'react';
-import { Text, View, StyleSheet, ImageBackground,Dimensions, Image } from 'react-native';
+import { View, Text, StyleSheet,TouchableOpacity, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import { Ionicons } from '@expo/vector-icons';
 
-const {width, height} = Dimensions.get('window');
-
-const Login = ({ navigation}) => {
+const SignUp = ({navigation}) => {
     return(
         <SafeAreaView style={styles.container}>
-            <View style={{flexDirection:"row", justifyContent:'space-between'}}>
-                <Text style={styles.headerText}>Dejays</Text>
-                <Image style={styles.image} source={require('../../assets/login_item.jpg')}/>
+            <View style={{flexDirection:'row',  marginTop:60,  marginLeft:20}}>
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ width:32, height:32,borderRadius:16, backgroundColor:"white", justifyContent:'center',alignItems:'center'}}>
+                    <Ionicons name="ios-arrow-round-back" size={32} color="#30AD88"  />
+                </TouchableOpacity>
+                <Text style={styles.headerText}>{"Start shopping with us :)"}</Text>
             </View>
-            <Text style={{textAlign:'center', marginTop:20, fontWeight:'500', fontSize:25, color:'#fff'}}>Login</Text>
-
+            <Text style={{textAlign:'center', marginTop:20, fontWeight:'500', fontSize:25, color:'#fff', marginTop:40}}>Sign Up</Text>
             {/* Form */}
             <View style={styles.form}>
-                {/* Email */}
+                {/* User Name */}
                 <View>
                     <Text style={styles.inputLabel}>Email address</Text>
                     <TextInput 
@@ -24,8 +23,16 @@ const Login = ({ navigation}) => {
                         autoCapitalize="none"
                         />
                 </View>
+                {/* Email */}
+                <View  style={{marginTop:38}}>
+                    <Text style={styles.inputLabel}>Email address</Text>
+                    <TextInput 
+                        style={styles.input} 
+                        autoCapitalize="none"
+                        />
+                </View>
                 {/* Password */}
-                <View style={{marginTop:40}}>
+                <View style={{marginTop:38}}>
                     <Text style={styles.inputLabel}>Password</Text>
                     <TextInput
                          style={styles.input}
@@ -34,21 +41,16 @@ const Login = ({ navigation}) => {
                          />
                 </View>
             </View>
-            {/* Forgot password */}
-            <TouchableOpacity style={styles.forgotPasswordContainer}>
-                <Text style={styles.forgotPassword}>Forgot Password?</Text>
-            </TouchableOpacity>
             {/* Login Button */}
-            <TouchableOpacity onPress={ () => navigation.navigate('Home')} style={styles.loginBtn}>
-                <Text style={{color:"#30AD88", fontSize:15, fontWeight:'bold'}}>Log in</Text>
+            <TouchableOpacity style={styles.loginBtn} onPress={ () => navigation.navigate('Home')}>
+                <Text style={{color:"#30AD88", fontSize:15, fontWeight:'bold'}}>Sign up</Text>
             </TouchableOpacity>
             {/* Join Us */}
-            <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                <Text style={styles.joinUs}>Don't have an account with us? 
-                  <Text style={{color:'#fff', fontWeight:'bold'}}> Sign Up</Text>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+                <Text style={styles.joinUs}>Already have an account with us? 
+                  <Text style={{color:'#fff', fontWeight:'bold'}}> Log in</Text>
                 </Text>
             </TouchableOpacity>
-           
         </SafeAreaView>
     );
 };
@@ -56,23 +58,15 @@ const Login = ({ navigation}) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:"#30AD88",
-    },
-    image:{
-      width:250,
-      height:250,
-      borderBottomRightRadius:150,
-      borderBottomLeftRadius:120,
-      borderTopLeftRadius:150,
-      marginTop:-70
+        backgroundColor:"#30AD88"
     },
     headerText:{
-        marginTop:70,
         color:'#fff',
         fontSize:45,
         fontWeight:'bold',
         marginLeft:20,
-        fontFamily:'SnellRoundhand',
+        fontFamily:'Savoye LET',
+        marginTop:-5
     },
     form:{
         marginBottom:35,
@@ -87,21 +81,13 @@ const styles = StyleSheet.create({
     input:{
         borderBottomColor:'#e4e4e4',
         borderBottomWidth: StyleSheet.hairlineWidth,
-        height:40,
+        height:38,
         fontSize:15,
         color:'white'
     },
-    forgotPasswordContainer:{
-        justifyContent:'center',
-        alignItems:'center'
-    },
-    forgotPassword:{
-        color:'white',
-        fontSize:15  
-    },
     loginBtn:{
        marginLeft:100,
-       marginTop:20,
+       marginTop:18,
        width:230,
        height:40,
        backgroundColor:'#ffffff',
@@ -117,5 +103,4 @@ const styles = StyleSheet.create({
         color:'#e4e4e4'
     },
 })
-
-export default Login;
+export default SignUp;
