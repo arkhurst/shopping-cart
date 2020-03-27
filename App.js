@@ -13,8 +13,11 @@ import HomeScreen from './drawer/homeScreen';
 import Basket from './drawerItems/basket';
 import Profile from './drawerItems/profile';
 import Settings from './drawerItems/settings';
-import Fav from './screens/fav';
-import Services from './screens/services';
+
+//Screens
+import LoginScreen from './screens/login/login';
+import Fav from './screens/favourites/fav';
+import Services from './screens/services/services';
 // import Phones from './tabs/phones';
 // import Tablets from './tabs/tablets';
 
@@ -92,12 +95,19 @@ const App = () => {
  const createHomeStack = () =>
         <Stack.Navigator>
               <Stack.Screen 
+               name="Login"
+               component={LoginScreen}
+               options={{
+                 headerShown:false
+               }}
+              />
+              <Stack.Screen 
               name="Home" 
               children={createDrawer}
               options={{
               headerTitle: () => < LogoTitle  />,
-              headerLeft: () => (
-                  <TouchableOpacity style={{marginLeft:15}} >
+              headerLeft: ({navigation}) => (
+                  <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:15}} >
                     <Ionicons 
                     name="ios-menu"
                     size={26}
@@ -198,7 +208,11 @@ const App = () => {
    
    // Drawer stack
    const  createDrawer = () =>
-        <Drawer.Navigator>
+        <Drawer.Navigator
+          drawerContentOptions={{
+            activeTintColor:"#30AD88"
+          }}
+        >
         {/* Drawer Items */}
              <Drawer.Screen 
                 name="Home" 
