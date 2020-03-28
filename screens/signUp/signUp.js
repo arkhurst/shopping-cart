@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, StyleSheet,TouchableOpacity, TextInput } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import LoadingAnim from '../LoadingAnimation';
 
 const SignUp = ({navigation}) => {
+
+    const [loading, setLoading] = useState(undefined);
+
+    const handleSignUp = () => {
+        setLoading(true)
+        setTimeout(() => {
+            setLoading(false)
+            navigation.navigate('Home');
+        },4000)
+    }
     return(
         <SafeAreaView style={styles.container}>
             <View style={{flexDirection:'row',  marginTop:60,  marginLeft:20}}>
@@ -17,7 +28,7 @@ const SignUp = ({navigation}) => {
             <View style={styles.form}>
                 {/* User Name */}
                 <View>
-                    <Text style={styles.inputLabel}>Email address</Text>
+                    <Text style={styles.inputLabel}>Username</Text>
                     <TextInput 
                         style={styles.input} 
                         autoCapitalize="none"
@@ -42,11 +53,12 @@ const SignUp = ({navigation}) => {
                 </View>
             </View>
             {/* Login Button */}
-            <TouchableOpacity style={styles.loginBtn} onPress={ () => navigation.navigate('Home')}>
+            <TouchableOpacity onPress={() => handleSignUp()} style={styles.loginBtn}>
                 <Text style={{color:"#30AD88", fontSize:15, fontWeight:'bold'}}>Sign up</Text>
             </TouchableOpacity>
+            <LoadingAnim loading={loading}/>
             {/* Join Us */}
-            <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity  onPress={ () => navigation.navigate('Login')} >
                 <Text style={styles.joinUs}>Already have an account with us? 
                   <Text style={{color:'#fff', fontWeight:'bold'}}> Log in</Text>
                 </Text>

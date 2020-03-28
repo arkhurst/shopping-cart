@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, ImageBackground,Dimensions, Image } from 'react-native';
+import { Text, View, StyleSheet, Image } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import LoadingAnim from '../LoadingAnimation';
 
-const {width, height} = Dimensions.get('window');
 
 const Login = ({ navigation}) => {
     const [loading, setLoading] = useState(undefined)
