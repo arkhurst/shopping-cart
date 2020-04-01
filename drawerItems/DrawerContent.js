@@ -17,47 +17,52 @@ const Drawer = (props) => {
                 {/* Drawer section */}
                 <View style={styles.drawerSection}>
                     <DrawerItem 
-                        icon={({focused}) => (
+                        icon={() => (
                             <Ionicons 
                                 name = "ios-home" 
                                 size={26} 
-                                color={focused ? "#30AD88" : "grey"} 
+                                color= "#30AD88"
                             />
                         )}
                         label="Home"
+                        labelStyle={{color:'#30AD88'}}
                         onPress={() => {}}
                     />
                       <DrawerItem 
-                        icon={({focused}) => (
+                        icon={() => (
                             <Ionicons 
                                 name = "ios-basket" 
                                 size={26} 
-                                color={focused ? "#30AD88" : "grey"} 
+                                color= "#30AD88"
                             />
                         )}
                         label="Basket"
+                        labelStyle={{color:'#30AD88'}}
                         onPress={() => {}}
                     />
                       <DrawerItem 
-                        icon={({focused}) => (
+                        icon={() => (
                             <FontAwesome 
                                 name = "user-o" 
                                 size={26} 
-                                color={focused ? "#30AD88" : "grey"} 
+                                color="#30AD88"
                             />
                         )}
                         label="Account"
+                        labelStyle={{color:'#30AD88'}}
                         onPress={() => {}}
+
                     />
                       <DrawerItem 
-                        icon={({focused}) => (
+                        icon={() => (
                             <Ionicons 
                                 name = "ios-settings" 
                                 size={26} 
-                                color={focused ? "#30AD88" : "grey"} 
+                                color="#30AD88" 
                             />
                         )}
                         label="Settings"
+                        labelStyle={{color:'#30AD88'}}
                         onPress={() => {}}
                     />
 
@@ -73,7 +78,9 @@ const styles = StyleSheet.create({
     },
     userContainer:{
         paddingLeft:20,
-        backgroundColor:'red'
+        backgroundColor:'red',
+        marginTop:-50,
+      
 
     },
     profile:{

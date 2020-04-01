@@ -225,9 +225,6 @@ const App = () => {
    // Drawer stack
    const  createDrawer = () =>
         <Drawer.Navigator
-          drawerContentOptions={{
-            activeTintColor:"#30AD88"
-          }}
           drawerContent={props => <DrawerItems {...props} />}
    
         >
