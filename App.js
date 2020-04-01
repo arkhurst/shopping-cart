@@ -4,10 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerContent } from '@react-navigation/drawer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
-
+import DrawerItems from './drawerItems/DrawerContent';
 // Drawer components
 import HomeScreen from './drawer/homeScreen';
 import Basket from './drawerItems/basket';
@@ -122,8 +122,8 @@ const App = () => {
               children={createDrawer}
               options={{
               headerTitle: () => < LogoTitle  />,
-              headerLeft: ({navigation}) => (
-                  <TouchableOpacity onPress={() => navigation.openDrawer()} style={{marginLeft:15}} >
+              headerLeft: ({openDrawer}) => (
+                  <TouchableOpacity onPress={() => openDrawer} style={{marginLeft:15}} >
                     <Ionicons 
                     name="ios-menu"
                     size={26}
@@ -228,16 +228,15 @@ const App = () => {
           drawerContentOptions={{
             activeTintColor:"#30AD88"
           }}
+          drawerContent={props => <DrawerItems {...props} />}
+   
         >
         {/* Drawer Items */}
              <Drawer.Screen 
                 name="Home" 
                 component={HomeScreen}
-                options = {{
-                  drawerIcon: () => <Ionicons name = "ios-home" size={26} color="#30AD88" />,
-                }}
              />
-             <Drawer.Screen 
+             {/* <Drawer.Screen 
                 name="Basket" 
                 component={Basket}
                 options = {{
@@ -257,7 +256,7 @@ const App = () => {
                 options = {{
                   drawerIcon: () => <Ionicons name = "ios-settings" size={26} color="#30AD88" />
                 }}
-             />
+             /> */}
           </Drawer.Navigator>
 
 
