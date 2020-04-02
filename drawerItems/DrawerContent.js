@@ -1,18 +1,22 @@
 import React from 'react';
-import { View, StyleSheet, Image,Text} from 'react-native';
+import { View, StyleSheet, Image,Text,ImageBackground} from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-import { Ionicons,FontAwesome } from '@expo/vector-icons';
+import { AntDesign,FontAwesome, Ionicons } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const Drawer = (props) => {
     return(
         <DrawerContentScrollView {...props}>
             <View style={styles.container}>
-                <View style={styles.userContainer}>
-                    <Image style={styles.profile} />
-                    <Text style={styles.user}>Welcome 
-                       <Text style={{fontWeight:'bold', fontFamily:'SnellRoundhand',}}>Fiifi</Text> 
+                <View source={require('../assets/profileBackground.jpg')} style={styles.userContainer}>
+                    <Image source={require('../assets/profile.jpg')} style={styles.profile} />
+                    <Text style={styles.user}>Welcome {""}
+                       <Text style={{fontWeight:'bold', fontFamily:'Savoye LET', fontSize:22}}>Fiifi</Text> 
                     </Text>
-                    <Ionicons name="ios-home" size={25} />
+                    <TouchableOpacity style={styles.logout}>
+                      <AntDesign name="logout" color="tomato" size={16} />
+                      <Text style={{marginLeft:5, fontWeight:'400'}}>Logout</Text>
+                    </TouchableOpacity>
                 </View>
                 {/* Drawer section */}
                 <View style={styles.drawerSection}>
@@ -26,7 +30,7 @@ const Drawer = (props) => {
                         )}
                         label="Home"
                         labelStyle={{color:'#30AD88'}}
-                        onPress={() => {}}
+                        onPress={() => props.navigation.navigate("Home")}
                     />
                     <DrawerItem 
                         icon={() => (
@@ -38,7 +42,7 @@ const Drawer = (props) => {
                         )}
                         label="Basket"
                         labelStyle={{color:'#30AD88'}}
-                        onPress={() => {}}
+                        onPress={() => props.navigation.navigate("Basket")}
                     />
                       <DrawerItem 
                         icon={() => (
@@ -77,19 +81,31 @@ const styles = StyleSheet.create({
     },
     userContainer:{
         paddingLeft:20,
-        backgroundColor:'red',
         marginTop:-50,
+        height:155,
+        borderBottomWidth:StyleSheet.hairlineWidth,
+        borderColor:'#30AD88'
     },
     profile:{
-        width:60,
-        height:60,
-        borderRadius:30,   
+        marginTop:15,
+        width:80,
+        height:80,
+        borderRadius:40, 
+        borderWidth:1.9,
+        borderColor:'white'  
     },
     user:{
-        marginTop:15
+        marginTop:5,
+        color:'black',
+        fontSize:14,
+        fontWeight:'bold'
     },
     drawerSection:{
         marginTop:20
+    },
+    logout:{
+        flexDirection:'row',
+        
     }
 })
 

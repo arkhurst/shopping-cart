@@ -6,11 +6,20 @@ import { MaterialIcons,Ionicons } from '@expo/vector-icons';
 import Lottie from 'lottie-react-native';
 import Payment from './paymentScreen/paymentScreen';
 
-const Basket = () => {
+const Basket = ({navigation}) => {
     const {cart, removeProducts, addToFav} = useContext(cartContext);
     const [mode, setMode] = useState(false);
     const [  like, setLike] = useState(new Animated.Value(0))
 
+    React.useLayoutEffect(() =>{
+        navigation.setOptions({
+            headerLeft:() => (
+                <TouchableOpacity onPress={() => navigation.goBack()} style={{ width:32, height:32,borderRadius:16, backgroundColor:"rgba(21,22,48,0.1)", justifyContent:'center',alignItems:'center', marginLeft:20}}>
+                 <Ionicons name="ios-arrow-round-back" size={32} color="#fff"  />
+                </TouchableOpacity>
+            )
+        });
+    },[navigation])
     const closeButton = () => {
         setMode(false)
     }

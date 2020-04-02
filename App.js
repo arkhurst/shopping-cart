@@ -143,6 +143,22 @@ const App = () => {
                   }
                   }}
               />
+               <Stack.Screen 
+                  name="Basket"
+                  component={Basket}
+                  options={{
+                    headerTitle: () => (
+                        <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
+                          <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Basket
+                          </Text>
+                        </View>
+                    ),
+                    headerStyle: {
+                      backgroundColor:"#30AD88"
+                    },
+                    headerBackTitleVisible:false,
+                  }}
+             />
              <Stack.Screen 
                   name="fav"
                   component={Fav}
