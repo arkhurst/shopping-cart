@@ -58,7 +58,6 @@ const Login = ({ navigation}) => {
                   <Text style={{color:'#fff', fontWeight:'bold'}}> Sign Up</Text>
                 </Text>
             </TouchableOpacity>
-           
         </SafeAreaView>
     );
 };
@@ -118,7 +117,6 @@ const styles = StyleSheet.create({
        borderRadius:10,
        justifyContent:'center',
        alignItems:'center'
-
     },
     joinUs:{
         marginTop:12,

@@ -114,5 +114,6 @@ const styles = StyleSheet.create({
         textAlign:'center',
         color:'#e4e4e4'
     },
-})
+});
+
 export default SignUp;

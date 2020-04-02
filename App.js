@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { View, Text } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { createDrawerNavigator, DrawerContent } from '@react-navigation/drawer';
+import { createDrawerNavigator} from '@react-navigation/drawer';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 
 import DrawerItems from './drawerItems/DrawerContent';
@@ -19,21 +19,20 @@ import LoginScreen from './screens/login/login';
 import Fav from './screens/favourites/fav';
 import Services from './screens/services/services';
 import SignUp from './screens/signUp/signUp';
-import Loading from './screens/welcome/loading';
-// import Phones from './tabs/phones';
-// import Tablets from './tabs/tablets';
+import Loading from './screens/welcome/Loading';
+
 
 export const cartContext = React.createContext({});
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
-const MaterialTopTab = createMaterialTopTabNavigator();
+
 
 //Custom header function
  const LogoTitle = ({count}) => {
   return(
       <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
-        <Text style={{fontSize:23, color:'white', }}>Dejays {""}
+        <Text style={{fontSize:23, color:'white' }}>Dejays {""}
             <Text style={{fontFamily:'Palatino-Italic', fontWeight:'bold'}}>Store</Text>
         </Text>
       </View>
@@ -44,18 +43,14 @@ const App = () => {
 
   const [cart, setCart] = React.useState([]);
   const [fav, setFav] = React.useState([]);
-
- 
  
   // Adding products to cart
   const addProducts = (product) => {
-   
     const newProduct = {
       id : product.id,
       product : product.product,
       price : product.price,
       image: product.image
-
     }
     product.inCart = true;
 
@@ -104,11 +99,11 @@ const App = () => {
                  }}
               />
               <Stack.Screen 
-               name="Login"
-               component={LoginScreen}
-               options={{
-                 headerShown:false
-               }}
+                name="Login"
+                component={LoginScreen}
+                options={{
+                  headerShown:false
+                }}
               />
               <Stack.Screen 
                  name="SignUp"
@@ -118,67 +113,59 @@ const App = () => {
                  }}
               />
               <Stack.Screen 
-              name="Home" 
-              children={createDrawer}
-              options={{
-              headerTitle: () => < LogoTitle  />,
-              headerLeft: ({openDrawer}) => (
-                  <TouchableOpacity onPress={() => openDrawer} style={{marginLeft:15}} >
-                    <Ionicons 
-                    name="ios-menu"
-                    size={26}
-                    color="white"
-                  />
-                  </TouchableOpacity>
-              ),
-              headerRight: () => (
-                <TouchableOpacity  style={{ marginRight:20}}>
-                    <FontAwesome 
-                    name="cart-plus"
-                    size={26}
-                    color="white" /> 
-                     <View style={{position:'absolute', width:16, height:16,  backgroundColor:'tomato', borderRadius:15, justifyContent:'center', alignItems:'center', left:15, bottom:10}}>
-                         <Text style={{fontSize:10, color:'white'}}>{cart.length}</Text>
-                   </View>   
-                </TouchableOpacity>
-              ), 
-              headerStyle: {
-                backgroundColor:"#30AD88"
-              }
-              }}
+                  name="Home" 
+                  children={createDrawer}
+                  options={{
+                  headerTitle: () => < LogoTitle  />,
+                  headerLeft: ({openDrawer}) => (
+                      <TouchableOpacity onPress={() => openDrawer} style={{marginLeft:15}} >
+                          <Ionicons 
+                            name="ios-menu"
+                            size={26}
+                            color="white"
+                          />
+                      </TouchableOpacity>
+                  ),
+                  headerRight: () => (
+                    <TouchableOpacity  style={{ marginRight:20}}>
+                        <FontAwesome 
+                          name="cart-plus"
+                          size={26}
+                          color="white"
+                         /> 
+                        <View style={{position:'absolute', width:16, height:16,  backgroundColor:'tomato', borderRadius:15, justifyContent:'center', alignItems:'center', left:15, bottom:10}}>
+                            <Text style={{fontSize:10, color:'white'}}>{cart.length}</Text>
+                        </View>   
+                    </TouchableOpacity>
+                  ), 
+                  headerStyle: {
+                    backgroundColor:"#30AD88"
+                  }
+                  }}
               />
-              {/* <Stack.Screen  
-              name="Product Category"
-              children={createTopTab}
-              options={{
-                headerStyle: {backgroundColor:'fff'                    
-              }}}
-              /> */}
-              <Stack.Screen 
-               name="fav"
-               component={Fav}
-               options={{
-                headerTitle: () => (
-                    <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
-                      <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Favourites
-                      </Text>
-                    </View>
-                ),
-                headerStyle: {
-                  backgroundColor:"#30AD88"
-                },
-                headerBackTitleVisible:false,
-      
-               }}
-              />
-              <Stack.Screen 
+             <Stack.Screen 
+                  name="fav"
+                  component={Fav}
+                  options={{
+                    headerTitle: () => (
+                        <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
+                          <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Favourites
+                          </Text>
+                        </View>
+                    ),
+                    headerStyle: {
+                      backgroundColor:"#30AD88"
+                    },
+                    headerBackTitleVisible:false,
+                  }}
+             />
+            <Stack.Screen 
                name="services"
                component={Services}
                options={{
                 headerTitle: () => (
                     <View style={{alignItems:'center', flexDirection:'row', justifyContent:'center'}}>
-                      <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Services
-                      </Text>
+                      <Text style={{fontSize:20, color:'white', fontWeight:'bold' }}>Services</Text>
                     </View>
                 ),
                 headerStyle: {
@@ -190,72 +177,19 @@ const App = () => {
                     <Ionicons name="ios-arrow-round-back" size={32} color="#e9446a"  />
                   </TouchableOpacity>
                 ),
-                
-      
                }}
                
-              />
+            />
         </Stack.Navigator>
-
-//Function for Tabs for  item categories
-    // const createTopTab = () => 
-    //      <MaterialTopTab.Navigator>
-    //          <MaterialTopTab.Screen
-    //            name="Phones"
-    //            component={Phones}
-    //            options={{title:'Phones'}}
-    //            tabBarOptions={{ 
-    //              labelStyle: { fontSize: 12 },
-    //              tabStyle: { width: 100 },
-    //              style: { backgroundColor: 'powderblue' }
-    //           }}
-    //          />
-    //          <MaterialTopTab.Screen
-    //             name="Tablets"
-    //             component={Tablets}
-    //             options={{title:'Tablets'}}
-    //             tabBarOptions={{ 
-    //               labelStyle: { fontSize: 12 },
-    //               tabStyle: { width: 100 },
-    //               style: { backgroundColor: 'powderblue' }
-    //           }}
-    //          />
-    //      </MaterialTopTab.Navigator>
    
    // Drawer stack
    const  createDrawer = () =>
-        <Drawer.Navigator
-          drawerContent={props => <DrawerItems {...props} />}
-   
-        >
-        {/* Drawer Items */}
+        <Drawer.Navigator drawerContent={props => <DrawerItems {...props} />}>
              <Drawer.Screen 
                 name="Home" 
                 component={HomeScreen}
              />
-             {/* <Drawer.Screen 
-                name="Basket" 
-                component={Basket}
-                options = {{
-                  drawerIcon: () => <Ionicons name = "ios-basket" size={26} color="#30AD88" />
-                }}
-                />
-            <Drawer.Screen 
-                name="Account" 
-                component={Profile}
-                options = {{
-                  drawerIcon: () => <FontAwesome name = "user-o" size={26} color="#30AD88" />
-                }}
-                />
-            <Drawer.Screen 
-                name="Settings" 
-                component={Settings}
-                options = {{
-                  drawerIcon: () => <Ionicons name = "ios-settings" size={26} color="#30AD88" />
-                }}
-             /> */}
-          </Drawer.Navigator>
-
+         </Drawer.Navigator>
 
       return(
         <cartContext.Provider value={{cart, addProducts, removeProducts, fav, addToFav, removeFav}}>
@@ -264,7 +198,6 @@ const App = () => {
           </NavigationContainer>
         </cartContext.Provider>
       );
- 
 };
 
 export default App;

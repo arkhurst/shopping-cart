@@ -47,7 +47,6 @@ const Settings = ({ navigation }) => {
                       <Ionicons name="ios-arrow-forward" size={25}  color='grey' />
                     </View>
                 </TouchableWithoutFeedback>
-              
             </View>
         </View>
     );
@@ -56,7 +55,7 @@ const Settings = ({ navigation }) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        backgroundColor:"whitesmoke",
+        backgroundColor:"whitesmoke"
     },
     itemContainer:{
         justifyContent:'space-evenly',

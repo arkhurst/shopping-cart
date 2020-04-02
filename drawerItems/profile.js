@@ -28,7 +28,7 @@ const Profile = ({navigation}) => {
             </View>
             <Text style={{fontWeight:'bold', marginTop:10,paddingHorizontal:15, color:'grey'}}>MY SETTINGS</Text>
             <View style={styles.itemContainer}>
-               <Text style={{fontWeight:'bold'}}>Account Details</Text>
+                <Text style={{fontWeight:'bold'}}>Account Details</Text>
                 <Text style={{fontWeight:'bold'}}>Change Password</Text>
                 <Text style={{fontWeight:'bold'}}>Delete Account</Text>
             </View>
@@ -65,5 +65,6 @@ const styles = StyleSheet.create({
         paddingHorizontal:15,
         marginVertical:10
     }
-})
+});
+
 export default Profile;

@@ -15,6 +15,7 @@ const Services = ({ navigation }) => {
               ),
         });
       }, [navigation]);
+
     return(
         <View style={styles.container}>
              <Text style={{fontWeight:'500', marginTop:30,paddingHorizontal:15}}>Our Services</Text>
@@ -60,6 +61,6 @@ const styles = StyleSheet.create({
         width:415,
         paddingHorizontal:15,
         marginVertical:10
-    },
+    }
 })
 export default Services;

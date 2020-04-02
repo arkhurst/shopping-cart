@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, Image,Text} from 'react-native';
-import { DrawerContent, DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
+import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { Ionicons,FontAwesome } from '@expo/vector-icons';
 
 const Drawer = (props) => {
@@ -28,7 +28,7 @@ const Drawer = (props) => {
                         labelStyle={{color:'#30AD88'}}
                         onPress={() => {}}
                     />
-                      <DrawerItem 
+                    <DrawerItem 
                         icon={() => (
                             <Ionicons 
                                 name = "ios-basket" 
@@ -53,7 +53,7 @@ const Drawer = (props) => {
                         onPress={() => {}}
 
                     />
-                      <DrawerItem 
+                    <DrawerItem 
                         icon={() => (
                             <Ionicons 
                                 name = "ios-settings" 
@@ -65,7 +65,6 @@ const Drawer = (props) => {
                         labelStyle={{color:'#30AD88'}}
                         onPress={() => {}}
                     />
-
                 </View>
             </View>
         </DrawerContentScrollView>
@@ -80,8 +79,6 @@ const styles = StyleSheet.create({
         paddingLeft:20,
         backgroundColor:'red',
         marginTop:-50,
-      
-
     },
     profile:{
         width:60,

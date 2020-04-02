@@ -97,7 +97,6 @@ const PaymentScreen = ({visible, cancel}) => {
 						{getTotalPrice()}
 					</Text>
               </View>
-
               <View style={{width:160, height:40, backgroundColor:'#30AD88', marginTop:70, marginLeft:100, borderRadius:5}}>
                   <Button onPress={makePayment} title="Proceed" color="white" />
                   {!done ? (
